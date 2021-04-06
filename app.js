@@ -45,11 +45,11 @@ function addPhraseToDisplay(array) {
 addPhraseToDisplay(array1);
 
 function checkLetter(buttonClicked) {
-  const liLetter = document.getElementsByClassName("li");
+  const liLetterClass = document.getElementsByClassName("li");
   let match = null;
-  for (let i = 0; i < buttonClicked.length; i++) {
-    if (buttonClicked.textContent === allLi[i].textContent) {
-      allLi[i].class = "show";
+  for (let i = 0; i < liLetterClass.length; i++) {
+    if (buttonClicked.textContent === liLetterClass[i].textContent) {
+      liLetterClass[i].class = "show";
       match = buttonClicked.textContent;
     }
   }
