@@ -45,7 +45,7 @@ function addPhraseToDisplay(array) {
 addPhraseToDisplay(array1);
 
 function checkLetter(buttonClicked) {
-  const liLetterClass = document.getElementsByClassName("li");
+  const liLetterClass = document.getElementsByClassName("letter");
   let match = null;
   for (let i = 0; i < liLetterClass.length; i++) {
     if (buttonClicked.textContent === liLetterClass[i].textContent) {
