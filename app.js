@@ -52,7 +52,9 @@ function checkLetter(buttonClicked) {
   let match = null;
   for (let i = 0; i < liLetterClass.length; i++) {
     if (buttonClicked.textContent === liLetterClass[i].textContent) {
-      liLetterClass[i].class = "show";
+      liLetterClass[i].classList.add("show");
+      let test = liLetterClass[i];
+      console.log(test);
       match = buttonClicked.textContent;
     }
   }
