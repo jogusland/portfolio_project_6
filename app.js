@@ -12,7 +12,7 @@ let phrases = [
   "we love it",
 ];
 
-//start game listener
+//listen for the start game to be pressed
 btn_reset.addEventListener("click", (e) => {
   overlay.style.display = "none";
 });
@@ -59,6 +59,7 @@ function checkLetter(buttonClicked) {
   return match;
 }
 
+//listen for keys to be pressed on the screen
 qwerty.addEventListener("click", (e) => {
   if (e.target.tagName === "BUTTON") {
     e.target.className = "chosen";
@@ -72,6 +73,7 @@ qwerty.addEventListener("click", (e) => {
   checkWin();
 });
 
+//check if the player wins
 function checkWin() {
   let showClass = document.getElementsByClassName("show");
   let letterClass = document.getElementsByClassName("letter");
@@ -80,6 +82,10 @@ function checkWin() {
   if (showClass.length === letterClass.length) {
     overlayId.classList.add("win");
     title.textContent = "You won the Game!";
+    overlayId.style.display = "flex";
+  } else if (missed > 4) {
+    overlayId.classList.add("lose");
+    title.textContent = "You lost the Game!";
     overlayId.style.display = "flex";
   }
 }
