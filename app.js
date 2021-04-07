@@ -1,13 +1,15 @@
 let qwerty = document.getElementById("qwerty");
 let phraseDiv = document.getElementById("phrase");
 let btn_reset = document.getElementsByClassName("btn__reset")[0];
+let tries = document.getElementsByClassName("tries");
+let ol = tries.parentNode;
 let missed = 0; //remember, if the player guesses wrong 5 times, they lose the game
 let phrases = [
-  "We are One",
-  "Whats up",
-  "Who am I",
-  "We like it",
-  "We love it",
+  "we are one",
+  "whats up",
+  "who am i",
+  "we like it",
+  "we love it",
 ];
 
 //start game listener
@@ -44,6 +46,7 @@ function addPhraseToDisplay(array) {
 
 addPhraseToDisplay(array1);
 
+//The function loops over the letters and check if they match the letter in the button the player has chosen.
 function checkLetter(buttonClicked) {
   const liLetterClass = document.getElementsByClassName("letter");
   let match = null;
@@ -55,3 +58,16 @@ function checkLetter(buttonClicked) {
   }
   return match;
 }
+
+qwerty.addEventListener("click", (e) => {
+  if (e.target.tagName === "BUTTON") {
+    e.target.className = "chosen";
+    e.target.disabled = true;
+    const letterFound = checkLetter(e.target);
+    console.log(letterFound);
+    if (letterFound === null) {
+      tries[0].remove();
+      missed++;
+    }
+  }
+});
