@@ -53,8 +53,6 @@ function checkLetter(buttonClicked) {
   for (let i = 0; i < liLetterClass.length; i++) {
     if (buttonClicked.textContent === liLetterClass[i].textContent) {
       liLetterClass[i].classList.add("show");
-      let test = liLetterClass[i];
-      console.log(test);
       match = buttonClicked.textContent;
     }
   }
@@ -66,10 +64,22 @@ qwerty.addEventListener("click", (e) => {
     e.target.className = "chosen";
     e.target.disabled = true;
     const letterFound = checkLetter(e.target);
-    console.log(letterFound);
     if (letterFound === null) {
       tries[0].remove();
       missed++;
     }
   }
+  checkWin();
 });
+
+function checkWin() {
+  let showClass = document.getElementsByClassName("show");
+  let letterClass = document.getElementsByClassName("letter");
+  let overlayId = document.getElementById("overlay");
+  let title = document.querySelector(".title");
+  if (showClass.length === letterClass.length) {
+    overlayId.classList.add("win");
+    title.textContent = "You won the Game!";
+    overlayId.style.display = "flex";
+  }
+}
